@@ -273,10 +273,10 @@ class Dot154PacketParser:
     
             # Examine the source addressing mode
             saddr_mask = (fcf & DOT154_FCF_SADDR_MASK) >> 14
-            if daddr_mask == DOT154_FCF_ADDR_EXT:
+            if saddr_mask == DOT154_FCF_ADDR_EXT:
                 pktchop[5] = packet[offset:offset+8]
                 offset+=8
-            elif daddr_mask == DOT154_FCF_ADDR_SHORT:
+            elif saddr_mask == DOT154_FCF_ADDR_SHORT:
                 pktchop[5] = packet[offset:offset+2]
                 offset+=2
 
